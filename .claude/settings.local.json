@@ -44,7 +44,15 @@
       "Bash(python3 -c \"import json,sys; tree=json.load\\(sys.stdin\\); [print\\(x[''''path'''']\\) for x in tree.get\\(''''tree'''',[]\\)]\")",
       "Bash(python3 -c \":*)",
       "WebFetch(domain:github.com)",
-      "Bash(node -e \"const d=JSON.parse\\(require\\(''''fs''''\\).readFileSync\\(''''/dev/stdin'''',''''utf8''''\\)\\); console.log\\(''''desc:'''', d.description\\); console.log\\(''''readme:'''', \\(d.readme||''''''''\\).slice\\(0,2000\\)\\)\")"
+      "Bash(node -e \"const d=JSON.parse\\(require\\(''''fs''''\\).readFileSync\\(''''/dev/stdin'''',''''utf8''''\\)\\); console.log\\(''''desc:'''', d.description\\); console.log\\(''''readme:'''', \\(d.readme||''''''''\\).slice\\(0,2000\\)\\)\")",
+      "Bash(gh auth *)",
+      "Bash(gh issue create -R MikeMurdock/ensemble --title 'Upstream PR: fix\\(pi\\) — align ask_user parameters payload with ExtensionAPI interface' --body ' *)",
+      "Bash(gh issue create -R MikeMurdock/ensemble --title 'Upstream PR: fix\\(codex\\) — mark bin/install.js as executable' --body ' *)",
+      "Bash(python3 -c \"import sys; print\\(sys.executable\\)\")",
+      "Bash(uv --version)",
+      "Bash(gh issue create -R MikeMurdock/ensemble --title 'Declare router pytest dependency via pyproject.toml \\(uv project\\)' --body ' *)",
+      "Bash(python3 -c \"import sys,json; print\\(json.load\\(sys.stdin\\)['id']\\)\")",
+      "Bash(gh issue *)"
     ]
   },
   "enabledPlugins": {}

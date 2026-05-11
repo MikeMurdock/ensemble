@@ -52,7 +52,13 @@
       "Bash(uv --version)",
       "Bash(gh issue create -R MikeMurdock/ensemble --title 'Declare router pytest dependency via pyproject.toml \\(uv project\\)' --body ' *)",
       "Bash(python3 -c \"import sys,json; print\\(json.load\\(sys.stdin\\)['id']\\)\")",
-      "Bash(gh issue *)"
+      "Bash(gh issue *)",
+      "Read(//Users/mmurdock/Documents/**)",
+      "Read(//Users/mmurdock/Development/client-fortium/docs/Ensemble/**)",
+      "Read(//Users/mmurdock/**)"
+    ],
+    "additionalDirectories": [
+      "/Users/mmurdock/Development/client-fortium/docs/Ensemble"
     ]
   },
   "enabledPlugins": {}

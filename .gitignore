@@ -8,6 +8,10 @@ build/
 .npmrc.local
 *.backup
 
+# Python virtual environments (per-package or per-project)
+.venv/
+**/.venv/
+
 # Python cache files
 __pycache__/
 *.pyc

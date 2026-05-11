@@ -1,0 +1,8 @@
+[project]
+name = "ensemble-router-python"
+version = "5.2.1"
+description = "Python tests for the ensemble-router UserPromptSubmit hook"
+requires-python = ">=3.10"
+
+[dependency-groups]
+dev = ["pytest>=8.0"]

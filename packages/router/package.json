@@ -38,7 +38,7 @@
     }
   },
   "scripts": {
-    "test": "if [ \"$CI\" = \"true\" ]; then echo 'Skipping Python tests in CI (pytest not available)'; exit 0; else python3 -m pytest tests/test_router.py -v; fi",
+    "test": "if [ \"$CI\" = \"true\" ]; then echo 'Skipping Python tests in CI (pytest not available)'; exit 0; else uv run pytest tests/test_router.py -v; fi",
     "test:local": "python3 -m pytest tests/test_router.py -v",
     "test:coverage": "python3 -m pytest tests/test_router.py -v --cov=hooks --cov-report=term-missing"
   },

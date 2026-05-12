@@ -55,7 +55,8 @@
       "Bash(gh issue *)",
       "Read(//Users/mmurdock/Documents/**)",
       "Read(//Users/mmurdock/Development/client-fortium/docs/Ensemble/**)",
-      "Read(//Users/mmurdock/**)"
+      "Read(//Users/mmurdock/**)",
+      "Bash(bun *)"
     ],
     "additionalDirectories": [
       "/Users/mmurdock/Development/client-fortium/docs/Ensemble"

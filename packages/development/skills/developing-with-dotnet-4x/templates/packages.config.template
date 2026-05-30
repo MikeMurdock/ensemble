@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Template: packages.config for a .NET Framework 4.6.1 web application (MVC 5 + Web API 2 + EF6 + OWIN).
+  packages.config lists DIRECT and TRANSITIVE packages flatly with exact versions and a TFM.
+  There is no lockfile and no transitive resolution: this file IS the dependency closure.
+  Restore with:  nuget restore Solution.sln
+  Adjust the targetFramework moniker to match your project (net461 / net472 / net48).
+-->
+<packages>
+  <!-- ASP.NET MVC 5 -->
+  <package id="Microsoft.AspNet.Mvc" version="5.2.3" targetFramework="net461" />
+  <package id="Microsoft.AspNet.Razor" version="3.2.3" targetFramework="net461" />
+  <package id="Microsoft.AspNet.WebPages" version="3.2.3" targetFramework="net461" />
+  <package id="Microsoft.AspNet.Web.Optimization" version="1.1.3" targetFramework="net461" />
+  <package id="Microsoft.Web.Infrastructure" version="1.0.0.0" targetFramework="net461" />
+
+  <!-- ASP.NET Web API 2 -->
+  <package id="Microsoft.AspNet.WebApi" version="5.2.3" targetFramework="net461" />
+  <package id="Microsoft.AspNet.WebApi.Core" version="5.2.3" targetFramework="net461" />
+  <package id="Microsoft.AspNet.WebApi.Client" version="5.2.3" targetFramework="net461" />
+  <package id="Microsoft.AspNet.WebApi.WebHost" version="5.2.3" targetFramework="net461" />
+  <package id="Microsoft.AspNet.WebApi.Owin" version="5.2.3" targetFramework="net461" />
+
+  <!-- OWIN / Katana -->
+  <package id="Owin" version="1.0" targetFramework="net461" />
+  <package id="Microsoft.Owin" version="3.1.0" targetFramework="net461" />
+  <package id="Microsoft.Owin.Host.SystemWeb" version="3.1.0" targetFramework="net461" />
+
+  <!-- Entity Framework 6 -->
+  <package id="EntityFramework" version="6.2.0" targetFramework="net461" />
+
+  <!-- JSON: pin to a current, patched release (legacy baselines often shipped 10.x/11.x) -->
+  <package id="Newtonsoft.Json" version="13.0.3" targetFramework="net461" />
+
+  <!-- Roslyn compiler for runtime Razor/codegen on 4.x (optional but common) -->
+  <package id="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" version="2.0.1" targetFramework="net461" />
+</packages>

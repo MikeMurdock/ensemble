@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Template: minimal-but-complete web.config for a .NET Framework 4.6.1 web app
+  (MVC 5 + Web API 2 + EF6). Real legacy configs are far larger (hundreds of binding
+  redirects); this shows the load-bearing sections. No placeholders — uses a literal
+  neutral domain (Acme); read and adapt directly.
+-->
+<configuration>
+  <configSections>
+    <!-- EF6 GOTCHA: the EntityFramework ASSEMBLY version is 6.0.0.0 for EVERY 6.x NuGet
+         package (6.0–6.5). Keep Version=6.0.0.0 here and in any binding redirect — do NOT
+         "correct" it to the NuGet package version (e.g. 6.2.0.0), or the section handler
+         fails to load at startup. -->
+    <section name="entityFramework"
+             type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+             requirePermission="false" />
+  </configSections>
+
+  <connectionStrings>
+    <add name="DefaultConnection"
+         connectionString="Data Source=.;Initial Catalog=Acme;Integrated Security=True;MultipleActiveResultSets=True"
+         providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+  <appSettings>
+    <add key="webpages:Version" value="3.0.0.0" />
+    <add key="webpages:Enabled" value="false" />
+    <add key="ClientValidationEnabled" value="true" />
+    <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+  </appSettings>
+
+  <system.web>
+    <!-- Keep targetFramework consistent in BOTH compilation and httpRuntime. -->
+    <compilation debug="true" targetFramework="4.6.1" />
+    <httpRuntime targetFramework="4.6.1" maxRequestLength="40960" />
+    <customErrors mode="RemoteOnly" defaultRedirect="~/Error" />
+    <!-- mode="None": authentication delegated to OWIN middleware (see Startup). -->
+    <authentication mode="None" />
+  </system.web>
+
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true" />
+    <handlers>
+      <remove name="ExtensionlessUrlHandler-Integrated-4.0" />
+      <remove name="OPTIONSVerbHandler" />
+      <remove name="TRACEVerbHandler" />
+      <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*"
+           type="System.Web.Handlers.TransferRequestHandler"
+           preCondition="integratedMode,runtimeVersionv4.0" />
+    </handlers>
+  </system.webServer>
+
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
+    <providers>
+      <provider invariantName="System.Data.SqlClient"
+                type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
+    </providers>
+  </entityFramework>
+
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <!-- One <dependentAssembly> per diverging strong-named dependency.
+           Repair drift with PM> Add-BindingRedirect. -->
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-13.0.0.0" newVersion="13.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.3.0" newVersion="5.2.3.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Http" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.3.0" newVersion="5.2.3.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>

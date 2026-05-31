@@ -161,11 +161,11 @@
 
 | Topic | Why excluded | Where it belongs |
 |-------|--------------|------------------|
-| Modern .NET / .NET Core / .NET 5+ | Different project system, hosting, DI, config | A modern-.NET skill (this skill is the migration *source* only) |
+| Modern .NET / .NET Core / .NET 5+ | Different project system, hosting, DI, config | Modern .NET — this skill is the migration *source* only |
 | Third-party platforms/frameworks layered on the app | Their own init, data model, and APIs are platform-specific | That platform's own documentation |
-| Identity providers (ASP.NET Identity internals, IdentityServer/Duende, OIDC, Azure AD) | Auth-agnostic by design | A dedicated identity skill |
-| WCF / WebForms | Distinct legacy stacks | Separate legacy skills if needed |
-| Front-end frameworks / SPA build | Out of scope for the server platform | Front-end skills |
+| Identity providers (ASP.NET Identity internals, IdentityServer/Duende, OIDC, Azure AD) | Auth-agnostic by design | Your chosen identity stack (bring your own) |
+| WCF / WebForms | Distinct legacy stacks | Out of scope |
+| Front-end frameworks / SPA build | Out of scope for the server platform | Front-end frameworks/tooling |
 
 ---
 
@@ -181,4 +181,4 @@
 1. Update the version baseline table (REFERENCE §12.1) as you validate newer 4.x targets.
 2. Keep the troubleshooting matrix synced between SKILL and REFERENCE.
 3. Re-run a leak scan for client identifiers (org/product names, domains, repo and internal component names) before any commit — examples must stay on the neutral `Acme.*` / `Product` domain.
-4. Add migration mappings as the companion modern-.NET skill evolves.
+4. Expand the migration-mapping tables (REFERENCE §11) as modern .NET targets are validated.

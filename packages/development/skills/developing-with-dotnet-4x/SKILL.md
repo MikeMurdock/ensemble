@@ -1,13 +1,13 @@
 ---
 name: developing-with-dotnet-4x
-description: Legacy .NET Framework 4.x maintenance (validated on 4.6.1) — ASP.NET MVC 5, Web API 2, Razor 3, Entity Framework 6, OWIN/Katana, old-style csproj + packages.config + web.config. Use when debugging, modifying, or migrating EXISTING .NET Framework applications. NOT for greenfield work or modern .NET / .NET Core (use a modern-.NET skill for those).
+description: Legacy .NET Framework 4.x maintenance (validated on 4.6.1) — ASP.NET MVC 5, Web API 2, Razor 3, Entity Framework 6, OWIN/Katana, old-style csproj + packages.config + web.config. Use when debugging, modifying, or migrating EXISTING .NET Framework applications. NOT for greenfield work or modern .NET / .NET Core.
 ---
 
 # .NET Framework 4.x Development Skill
 
 Maintenance patterns for **legacy ASP.NET applications on the classic .NET Framework** (validated on 4.6.1; APIs are identical across 4.6.1–4.8). Covers ASP.NET MVC 5, Web API 2, Razor 3, Entity Framework 6, OWIN/Katana, and the old-style MSBuild project system (`packages.config` + `web.config`).
 
-> **This is a legacy-maintenance skill, not a greenfield one.** Use it to *understand, debug, modify, and migrate existing* .NET Framework apps. New applications should target modern .NET — see the migration notes in [REFERENCE.md](REFERENCE.md), which treats this skill as the **source side** (comprehension) and a modern-.NET skill as the target side.
+> **This is a legacy-maintenance skill, not a greenfield one.** Use it to *understand, debug, modify, and migrate existing* .NET Framework apps. New applications should target modern .NET — see the migration notes in [REFERENCE.md](REFERENCE.md), which treats this skill as the **source side** (comprehension) of a migration whose target is modern .NET.
 
 **Progressive Disclosure**: This file is the quick reference. For comprehensive guides, the full troubleshooting matrix, and migration comprehension, see [REFERENCE.md](REFERENCE.md).
 
@@ -42,7 +42,7 @@ Loaded by `backend-developer` (or invoked directly) when a repository shows the 
 
 **Scope (in):** .NET Framework 4.x, ASP.NET MVC 5.2.x, Web API 2 (5.2.x), Razor 3.2.x, EF6 (6.x), OWIN/Katana (Microsoft.Owin 3.x), System.Web.Optimization (bundling), ADO.NET / `System.Data.SqlClient`, MSTest + Moq, old-style csproj + `packages.config` + `web.config`/transforms.
 
-**Scope (out — use a dedicated skill):**
+**Scope (out):**
 - **Modern .NET / .NET Core / .NET 5+** — different project system (SDK-style), hosting model (Kestrel/`Program.cs`), DI, and config. This skill is the *legacy source* for migrations only.
 - **Third-party platforms/frameworks layered on the app** — a 4.x app may host a larger product or framework on top of ASP.NET; its own initialization, data model, and APIs are out of scope. Treat such third-party types as opaque and consult that platform's own documentation. This skill covers only the Microsoft stack underneath.
 - **Identity providers** (ASP.NET Identity internals, IdentityServer/Duende, external OIDC, Azure AD) — see [Authentication (Out of Scope)](#authentication-out-of-scope).
@@ -518,7 +518,7 @@ The reason this skill exists. The high-frequency failure modes when maintaining 
 | New `DbContext` per call without `using` | Connection leaks, change-tracker bloat | One `DbContext` per request/unit-of-work, disposed |
 | Hand-editing binding redirects ad hoc | Drift, runtime load failures | Let NuGet generate/repair them; keep `<runtime>` consistent |
 | String-concatenated SQL | SQL injection | Parameterize (`SqlParameter` / EF LINQ) |
-| Treating greenfield .NET advice as applicable | SDK-style/Core APIs don't exist in 4.x | Use 4.x-specific patterns; reach for a modern-.NET skill only when migrating |
+| Treating greenfield .NET advice as applicable | SDK-style/Core APIs don't exist in 4.x | Use 4.x-specific patterns; modern .NET is relevant only as a migration target |
 | Catch-all `catch (Exception)` swallowing | Hides binding/config failures | Catch specific types; log with context |
 
 ---
@@ -589,7 +589,7 @@ Enable-Migrations ; Add-Migration <Name> ; Update-Database
 
 What this skill *does* note:
 - `authentication mode="None"` in `web.config` usually means auth is delegated to **OWIN middleware** (registered in `Startup.Configuration`) — its ordering relative to your handlers is a [debugging concern](#owin--katana-startup) covered here.
-- Where the identity *mechanism* itself is the subject (token issuance, user stores, claims transformation), use a dedicated identity skill. Bring your own; this skill imposes nothing.
+- Where the identity *mechanism* itself is the subject (token issuance, user stores, claims transformation), it is out of scope here. Bring your own; this skill imposes nothing.
 
 ---
 

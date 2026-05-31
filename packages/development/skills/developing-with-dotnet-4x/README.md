@@ -2,7 +2,7 @@
 
 Maintenance patterns for **legacy ASP.NET applications on the classic .NET Framework** — the kind of long-lived enterprise web app still running on MVC 5, Web API 2, Entity Framework 6, and OWIN. This skill helps you **understand, debug, modify, and migrate** existing 4.x apps.
 
-> **Not a greenfield skill.** New applications should target modern .NET. This skill deliberately covers the *legacy* stack and serves as the **source side** for migrations — a modern-.NET skill owns the target.
+> **Not a greenfield skill.** New applications should target modern .NET. This skill deliberately covers the *legacy* stack and serves as the **source side** for migrations — modern .NET is the target.
 
 ## Overview
 
@@ -77,14 +77,12 @@ The classic-framework fingerprint:
 
 ## Authentication
 
-This skill is **platform-focused and auth-agnostic**. A legacy 4.x app may use any identity stack (ASP.NET Identity, OWIN cookie/OAuth, external OIDC, IdentityServer/Duende, Azure AD). The skill notes only where identity *integrates* with the platform (OWIN middleware ordering); the identity mechanism itself belongs in a dedicated skill. Bring your own — this skill imposes nothing.
+This skill is **platform-focused and auth-agnostic**. A legacy 4.x app may use any identity stack (ASP.NET Identity, OWIN cookie/OAuth, external OIDC, IdentityServer/Duende, Azure AD). The skill notes only where identity *integrates* with the platform (OWIN middleware ordering); the identity mechanism itself is out of scope. Bring your own — this skill imposes nothing.
 
 ## Related Skills
 
 - **developing-with-typescript / developing-with-react** — front-ends that consume these APIs
 - **developing-with-python / nestjs** — sibling backend skills (rich-layout reference)
-- *(future)* a modern-.NET skill — the migration target side
-- *(future)* an identity skill — auth mechanisms
 
 ## Scope Boundaries
 

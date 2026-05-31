@@ -737,7 +737,7 @@ Use this to confirm N+1 patterns and to see the actual SQL EF emits.
 
 ## 11. Migration Comprehension (Legacy → Modern .NET)
 
-This skill owns the **source side**: reading a 4.x app accurately enough to migrate it. A modern-.NET skill owns the target. The goal here is *comprehension and mapping*, not rewriting.
+This skill owns the **source side**: reading a 4.x app accurately enough to migrate it. The target — modern .NET — is out of scope here. The goal here is *comprehension and mapping*, not rewriting.
 
 ### 11.1 What maps to what
 

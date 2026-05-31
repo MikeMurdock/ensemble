@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Template: packages.config additions for an Optimizely/Episerver CMS 11 (+ Commerce 13 + Find) web app
+  on .NET Framework 4.6.1. This shows the EPiServer.* CLOSURE you layer ON TOP of the base ASP.NET
+  stack (MVC 5 / Web API 2 / etc.) — for that base, see developing-with-dotnet-4x's packages.config.
+
+  These are representative CMS 11 / Commerce 13 / Find 13 versions; use the EXACT versions your
+  project restores as the source of truth. Adjust targetFramework (net461/net472/net48) to match.
+  NOTE: packages and namespaces are EPiServer.* at these versions (the Optimizely rename is CMS 12+).
+-->
+<packages>
+  <!-- CMS core + framework -->
+  <package id="EPiServer.CMS" version="11.14.2" targetFramework="net461" />
+  <package id="EPiServer.CMS.Core" version="11.14.2" targetFramework="net461" />
+  <package id="EPiServer.CMS.AspNet" version="11.14.2" targetFramework="net461" />
+  <package id="EPiServer.Framework" version="11.14.2" targetFramework="net461" />
+  <package id="EPiServer.Framework.AspNet" version="11.14.2" targetFramework="net461" />
+
+  <!-- CMS edit/admin UI (Shell) -->
+  <package id="EPiServer.CMS.UI" version="11.23.7" targetFramework="net461" />
+  <package id="EPiServer.CMS.UI.Core" version="11.23.7" targetFramework="net461" />
+  <package id="EPiServer.CMS.TinyMce" version="2.10.1" targetFramework="net461" />
+
+  <!-- Dependency injection (StructureMap-backed service locator) -->
+  <package id="EPiServer.ServiceLocation.StructureMap" version="2.0.3" targetFramework="net461" />
+  <package id="StructureMap" version="4.7.1" targetFramework="net461" />
+
+  <!-- Commerce 13 (omit if the site is CMS-only) -->
+  <package id="EPiServer.Commerce" version="13.16.0" targetFramework="net461" />
+  <package id="EPiServer.Commerce.Core" version="13.16.0" targetFramework="net461" />
+  <package id="EPiServer.Commerce.UI" version="13.16.0" targetFramework="net461" />
+
+  <!-- Search & Navigation (Find) (omit if the site does not use Find) -->
+  <package id="EPiServer.Find" version="13.2.6" targetFramework="net461" />
+  <package id="EPiServer.Find.Cms" version="13.2.6" targetFramework="net461" />
+  <package id="EPiServer.Find.Framework" version="13.2.6" targetFramework="net461" />
+  <package id="EPiServer.Find.Commerce" version="11.1.2" targetFramework="net461" />
+</packages>

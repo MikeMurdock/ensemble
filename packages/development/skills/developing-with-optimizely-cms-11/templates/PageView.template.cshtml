@@ -1,0 +1,35 @@
+@*
+  Template: Razor view for an Optimizely/Episerver CMS 11 page — Razor 3 on .NET Framework 4.x.
+  Placeholders: {{Namespace}} {{Page}}   ({{Page}} -> StandardPage)
+
+  RULE: render editable properties through Html.PropertyFor so on-page editing works and the
+  correct per-type display template is used. Do NOT output @Model.CurrentPage.X directly for
+  editable content — it breaks the editor experience.
+*@
+@model {{Namespace}}.Models.ViewModels.{{Page}}ViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<article>
+    <h1>@Html.PropertyFor(m => m.CurrentPage.Heading)</h1>
+
+    <div class="body">
+        @Html.PropertyFor(m => m.CurrentPage.MainBody)
+    </div>
+
+    @* A ContentArea renders each contained block through its own block controller/template. *@
+    <div class="content-area">
+        @Html.PropertyFor(m => m.CurrentPage.MainContentArea)
+    </div>
+
+    @if (Model.Children != null && Model.Children.Any())
+    {
+        <ul class="children">
+            @foreach (var child in Model.Children)
+            {
+                <li><a href="@Url.ContentUrl(child.ContentLink)">@child.Name</a></li>
+            }
+        </ul>
+    }
+</article>

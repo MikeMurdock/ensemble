@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Template: the Optimizely/Episerver-SPECIFIC sections of a CMS 11 web.config.
+  The surrounding web.config (system.web, system.webServer, runtime/assemblyBinding, connectionStrings
+  plumbing) is the host platform's concern — see developing-with-dotnet-4x's web.config template.
+  This file shows ONLY what the EPiServer.* layer adds. Placeholders: {{IndexName}}
+-->
+<configuration>
+
+  <configSections>
+    <!-- Register the EPiServer config sections (types are EPiServer.*, not Optimizely.*, at v11). -->
+    <section name="episerver" type="EPiServer.Configuration.EPiServerSection, EPiServer.Configuration" />
+    <section name="episerver.framework" type="EPiServer.Framework.Configuration.EPiServerFrameworkSection, EPiServer.Framework" />
+    <!-- Add if Find is used: -->
+    <section name="episerver.find" type="EPiServer.Find.Configuration, EPiServer.Find" />
+    <!-- Add if Commerce is used (Commerce ships its own sections). -->
+  </configSections>
+
+  <connectionStrings>
+    <!-- CMS database -->
+    <add name="EPiServerDB"
+         connectionString="Data Source=.;Initial Catalog=AcmeCms;Integrated Security=True;MultipleActiveResultSets=True"
+         providerName="System.Data.SqlClient" />
+    <!-- Commerce database (only if Commerce is installed) -->
+    <add name="EcfSqlConnection"
+         connectionString="Data Source=.;Initial Catalog=AcmeCommerce;Integrated Security=True;MultipleActiveResultSets=True"
+         providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+  <episerver.framework>
+    <appData basePath="App_Data" />
+    <!-- Scan bin for [InitializableModule] / content types / [ScheduledPlugIn]. -->
+    <scanAssembly forceBinFolderScan="true" />
+    <virtualRoles addClaims="true">
+      <providers>
+        <!-- e.g. CmsAdmins / CmsEditors virtual roles -->
+      </providers>
+    </virtualRoles>
+  </episerver.framework>
+
+  <episerver>
+    <!-- Site/host mappings, UI paths, etc. (largely scaffolded by the install). -->
+  </episerver>
+
+  <!-- Find: serviceUrl embeds an index key — treat as a SECRET (use a web.config transform or
+       encrypted section in production; see developing-with-dotnet-4x on transforms/section protection). -->
+  <episerver.find serviceUrl="https://YOUR_REGION.find.episerver.net/REPLACE_WITH_KEY/"
+                  defaultIndex="{{IndexName}}" />
+
+</configuration>

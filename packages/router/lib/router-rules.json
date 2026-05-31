@@ -393,6 +393,16 @@
       "patterns": ["\\.net.*app", "dotnet.*new", "entity.*framework"],
       "purpose": ".NET 8+ with ASP.NET Core patterns and Entity Framework"
     },
+    "developing-with-dotnet-4x": {
+      "triggers": [".net framework 4", "asp.net mvc 5", "web api 2", "entity framework 6", "ef6", "owin", "katana", "web.config", "packages.config", "binding redirect", "global.asax", "razor 3", "legacy .net"],
+      "patterns": ["TargetFrameworkVersion", "net4[5-8]", "System\\.Web\\.(Mvc|Http)", "packages\\.config", "bindingRedirect"],
+      "purpose": "Legacy .NET Framework 4.x maintenance - ASP.NET MVC 5, Web API 2, Razor 3, EF6, OWIN/Katana, old-style csproj + packages.config + web.config (debug/modify/migrate existing apps)"
+    },
+    "developing-with-optimizely-cms-11": {
+      "triggers": ["optimizely", "episerver", "cms 11", "commerce 13", "episerver find", "optimizely find", "search & navigation", "content type", "pagedata", "blockdata", "icontentrepository", "icontentloader", "initializablemodule", "scheduledplugin", "mediachase", "catalogcontent"],
+      "patterns": ["EPiServer\\.", "\\b(PageData|BlockData|MediaData)\\b", "IContent(Repository|Loader)", "\\[ContentType", "Mediachase\\.", "IInitializableModule|IConfigurableModule"],
+      "purpose": "Optimizely/Episerver CMS 11 & Commerce 13 (+ Search & Navigation/Find) maintenance - content types, IContentRepository, initialization modules, scheduled jobs, catalog/cart/order/pricing, Find queries (layered on developing-with-dotnet-4x for the .NET 4.x host)"
+    },
     "exunit": {
       "triggers": ["exunit", "elixir test", "mix test", "elixir spec"],
       "patterns": ["mix.*test", "exunit.*test"],

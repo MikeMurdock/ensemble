@@ -44,7 +44,7 @@ Loaded by `backend-developer` (or invoked directly) when a repository shows the 
 
 **Scope (out — use a dedicated skill):**
 - **Modern .NET / .NET Core / .NET 5+** — different project system (SDK-style), hosting model (Kestrel/`Program.cs`), DI, and config. This skill is the *legacy source* for migrations only.
-- **CMS / DXP platforms** (e.g. Optimizely/EPiServer, Sitecore) — a legacy app may host one, but its initialization modules, content model, and APIs belong in a platform-specific skill. Treat platform types as opaque here.
+- **Third-party platforms/frameworks layered on the app** — a 4.x app may host a larger product or framework on top of ASP.NET; its own initialization, data model, and APIs are out of scope. Treat such third-party types as opaque and consult that platform's own documentation. This skill covers only the Microsoft stack underneath.
 - **Identity providers** (ASP.NET Identity internals, IdentityServer/Duende, external OIDC, Azure AD) — see [Authentication (Out of Scope)](#authentication-out-of-scope).
 
 ---

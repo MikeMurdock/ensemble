@@ -162,7 +162,7 @@
 | Topic | Why excluded | Where it belongs |
 |-------|--------------|------------------|
 | Modern .NET / .NET Core / .NET 5+ | Different project system, hosting, DI, config | A modern-.NET skill (this skill is the migration *source* only) |
-| CMS / DXP platforms (e.g. Optimizely/EPiServer, Sitecore) | Platform-specific init modules, content model, APIs | A platform-specific skill |
+| Third-party platforms/frameworks layered on the app | Their own init, data model, and APIs are platform-specific | That platform's own documentation |
 | Identity providers (ASP.NET Identity internals, IdentityServer/Duende, OIDC, Azure AD) | Auth-agnostic by design | A dedicated identity skill |
 | WCF / WebForms | Distinct legacy stacks | Separate legacy skills if needed |
 | Front-end frameworks / SPA build | Out of scope for the server platform | Front-end skills |

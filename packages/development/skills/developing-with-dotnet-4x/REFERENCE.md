@@ -761,7 +761,7 @@ This skill owns the **source side**: reading a 4.x app accurately enough to migr
 2. **Map the composition root** — what `Application_Start` and `Startup.Configuration` register, in order. This becomes the modern host pipeline.
 3. **Find `System.Web` coupling** — `HttpContext.Current`, `Server.MapPath`, `Request`/`Response` access, `HttpModules`. These are the hard parts; they need the Core equivalents (`IHttpContextAccessor`, `IWebHostEnvironment`, middleware).
 4. **Isolate EF6** — confirm code-first vs EDMX, read `__MigrationHistory`, catalog entities/relationships. EF6→EF Core is a re-platform, not a port.
-5. **Identify platform/3rd-party lock-in** (CMS/DXP, identity stack) — these gate the migration and may need their own modern SKUs.
+5. **Identify third-party/platform lock-in** (any large framework layered on the app, identity stack) — these gate the migration and may need their own modern equivalents.
 
 ### 11.3 Incremental strategy
 

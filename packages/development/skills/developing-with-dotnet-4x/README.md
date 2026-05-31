@@ -88,7 +88,7 @@ This skill is **platform-focused and auth-agnostic**. A legacy 4.x app may use a
 
 ## Scope Boundaries
 
-Out of scope (by design): modern .NET / .NET Core, CMS/DXP platforms (e.g. Optimizely/EPiServer, Sitecore), identity-provider internals, WCF/WebForms. See [VALIDATION.md](VALIDATION.md#scope-boundaries-intentional-exclusions).
+Out of scope (by design): modern .NET / .NET Core, third-party platforms/frameworks layered on the app, identity-provider internals, WCF/WebForms. See [VALIDATION.md](VALIDATION.md#scope-boundaries-intentional-exclusions).
 
 ## Version
 

@@ -13,9 +13,9 @@
 Check git-town installation and configuration using validation script
 
 **Actions:**
-1. Execute validation script - bash packages/git/skills/git-town/scripts/validate-git-town.sh
+1. Locate and run the git-town validation script (works regardless of CWD; an absent script is non-fatal): VGT="$(find "$HOME/.claude/plugins" -path "*/skills/git/git-town/scripts/validate-git-town.sh" 2>/dev/null | sort -V | tail -n1)"; [ -f "$VGT" ] || VGT="$(git rev-parse --show-toplevel 2>/dev/null)/packages/git/skills/git-town/scripts/validate-git-town.sh"; if [ -f "$VGT" ]; then bash "$VGT"; else echo "git-town validation unavailable; skipping preflight"; fi
 2. Handle exit codes - 0 (success), 1 (not installed), 2 (not configured), 3 (version mismatch), 4 (not git repo)
-3. If validation fails, escalate with specific error message
+3. A not-found script (non-Claude runtime or dev-only install) or exit 1/2 (git-town not installed/configured) is a WARNING — continue; escalate only on unexpected errors and never HALT on git-town absence
 4. Ensure clean working directory (git status)
 
 ### Step 2: Feature Branch Creation

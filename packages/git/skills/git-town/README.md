@@ -190,8 +190,10 @@ gh pr list
 ### 4. Validate Environment
 
 ```bash
-# Run validation script
-bash packages/git/skills/git-town/scripts/validate-git-town.sh
+# Run validation script (located regardless of CWD; an absent script is non-fatal)
+VGT="$(find "$HOME/.claude/plugins" -path "*/skills/git/git-town/scripts/validate-git-town.sh" 2>/dev/null | sort -V | tail -n1)"
+[ -f "$VGT" ] || VGT="$(git rev-parse --show-toplevel 2>/dev/null)/packages/git/skills/git-town/scripts/validate-git-town.sh"
+if [ -f "$VGT" ]; then bash "$VGT"; else echo "git-town validation unavailable; skipping preflight"; fi
 
 # Expected output:
 # ✅ Git-town is installed (version: 14.0.0)
@@ -220,8 +222,10 @@ const errorHandling = await loadFile(`${skillPath}/ERROR_HANDLING.md`);
 ### Step 2: Validate Environment
 
 ```bash
-# Agent validates git-town installation
-bash packages/git/skills/git-town/scripts/validate-git-town.sh
+# Agent validates git-town installation (located regardless of CWD; an absent script is non-fatal)
+VGT="$(find "$HOME/.claude/plugins" -path "*/skills/git/git-town/scripts/validate-git-town.sh" 2>/dev/null | sort -V | tail -n1)"
+[ -f "$VGT" ] || VGT="$(git rev-parse --show-toplevel 2>/dev/null)/packages/git/skills/git-town/scripts/validate-git-town.sh"
+if [ -f "$VGT" ]; then bash "$VGT"; else echo "git-town validation unavailable; skipping preflight"; fi
 EXIT_CODE=$?
 
 # Exit code mapping:

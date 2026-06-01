@@ -81,11 +81,13 @@ Before using git-town commands, ensure the following requirements are met:
 Run the validation script before executing git-town workflows to ensure all prerequisites are met:
 
 ```bash
-# From the git-town skill directory
+# From the git-town skill directory:
 bash ./scripts/validate-git-town.sh
 
-# Or with absolute path using skill root
-bash ${ENSEMBLE_SKILL_ROOT}/scripts/validate-git-town.sh
+# From anywhere (callers outside the skill dir): locate it, then run. A missing script is non-fatal.
+VGT="$(find "$HOME/.claude/plugins" -path "*/skills/git/git-town/scripts/validate-git-town.sh" 2>/dev/null | sort -V | tail -n1)"
+[ -f "$VGT" ] || VGT="$(git rev-parse --show-toplevel 2>/dev/null)/packages/git/skills/git-town/scripts/validate-git-town.sh"
+if [ -f "$VGT" ]; then bash "$VGT"; else echo "git-town validation unavailable; skipping preflight"; fi
 ```
 
 **Exit codes:**

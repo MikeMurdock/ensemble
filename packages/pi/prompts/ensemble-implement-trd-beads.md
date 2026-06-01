@@ -56,7 +56,7 @@ Verify br is installed and functional, detect bv availability
 Verify git-town installed and working directory is clean
 
 **Actions:**
-1. Run: bash packages/git/skills/git-town/scripts/validate-git-town.sh — handle exit codes 0 (ok), 1 (not installed), 2 (not configured), 3 (version mismatch), 4 (not git repo)
+1. Run the git-town preflight — locate the script, then run it (a not-found script on non-Claude runtimes or dev-only installs is non-fatal): VGT="$(find "$HOME/.claude/plugins" -path "*/skills/git/git-town/scripts/validate-git-town.sh" 2>/dev/null | sort -V | tail -n1)"; [ -f "$VGT" ] || VGT="$(git rev-parse --show-toplevel 2>/dev/null)/packages/git/skills/git-town/scripts/validate-git-town.sh"; if [ -f "$VGT" ]; then bash "$VGT"; else echo "git-town validation unavailable; skipping preflight"; fi — handle exit codes 0 (ok), 1 (not installed), 2 (not configured), 3 (version mismatch), 4 (not git repo); treat a missing script or exit 1/2 as a WARNING and continue, do not HALT
 2. Run: git status --porcelain — HALT if output non-empty (dirty working directory)
 
 ### Step 4: TRD Selection and Validation

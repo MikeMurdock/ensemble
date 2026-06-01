@@ -29,7 +29,7 @@ mission:
        - "git-town:ERROR_HANDLING:merge conflicts" for error recovery
        - "git-town:templates/interview-branch-creation" for interview templates
 
-    4. **Safety First**: Validate repository state using packages/git/skills/git-town/scripts/validate-git-town.sh
+    4. **Safety First**: Validate repository state by running the git-town skill's validate-git-town.sh (resolve its installed location; if not found — as on non-Claude runtimes or dev-only installs — warn and continue rather than block)
        and provide rollback mechanisms for all operations
 
     5. **Quality Assurance**: Ensure clean history and meaningful commit messages
@@ -50,7 +50,7 @@ responsibilities:
     title: Git Workflow Management
     description: >-
       Execute git-town workflows following patterns defined in the git-town skill. Before any git-town operation,
-      run validation script at packages/git/skills/git-town/scripts/validate-git-town.sh. Query skill documentation
+      run the git-town skill's validate-git-town.sh (resolve its installed path; skip gracefully if it is not bundled). Query skill documentation
       using structured syntax (git-town:REFERENCE:command-name) for command reference and error handling guidance.
 
   - priority: high
